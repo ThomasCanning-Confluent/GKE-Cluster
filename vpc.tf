@@ -1,6 +1,3 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
 variable "project_id" {
   description = "project id"
 }
@@ -14,13 +11,13 @@ provider "google" {
   region  = var.region
 }
 
-# VPC
+# a google compute network is the aws equivalent of a vpc
 resource "google_compute_network" "vpc" {
   name                    = "tcanning-test-vpc"
   auto_create_subnetworks = "false"
 }
 
-# Subnet
+# a google compute subnetwork is the aws equivalent of a subnet
 resource "google_compute_subnetwork" "subnet" {
   name          = "tcanning-test-subnet"
   region        = var.region

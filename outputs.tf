@@ -1,6 +1,6 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
 
+#The outputs.tf file is used to define the output variables that will be displayed when the Terraform apply command is run.
+#Also enables the variables to be accessed from the command line or other Terraform configurations.
 output "region" {
   value       = var.region
   description = "GCloud Region"

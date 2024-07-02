@@ -1,5 +1,3 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
+#Defines variables for the GCP project id and region
 project_id = "cc-devel"
 region     = "europe-west2"
