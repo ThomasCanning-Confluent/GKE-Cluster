@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: echo-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: echo-server
+  template:
+    metadata:
+      labels:
+        app: echo-server
+    spec:
+      nodeSelector:
+        "kubernetes.io/os": linux
+      containers:
+      - name: echo-server
+        image: tcanning/echo-server:v1
+        ports:
+        - containerPort: 4000
+          name: http
+        resources:
+          requests:
+            cpu: 10m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: echo-server
+spec:
+  selector:
+    app: echo-server
+  ports:
+    - name: http
+      port: 80
+      targetPort: 4000
+  type: LoadBalancer
